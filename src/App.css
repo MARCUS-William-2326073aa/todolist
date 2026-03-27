@@ -1,38 +1,161 @@
+/* Variables et Reset */
+:root {
+  --main-bg-color: #282c34;
+  --glass-bg: rgba(255, 255, 255, 0.1);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --text-main: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+  transition: background-color 0.5s ease;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--main-bg-color);
+  color: var(--text-main);
+  overflow-x: hidden;
+}
+
 .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+/* --- HEADER (Contenant le Home Button) --- */
+header, .Header {
+  padding-top: 20px;
+  padding-bottom: 10px;
+}
+
+/* --- LOGO : Taille réduite + ANIMATION DE ROTATION --- */
+.App-logo {
+  height: 80px;
+  margin: 10px auto;
+  pointer-events: none;
+  display: block;
+  /* Activation de la rotation */
+  animation: App-logo-spin infinite 20s linear;
 }
 
 @keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* --- SECTION PRINCIPALE --- */
+.App-header {
+  padding: 0 20px;
+  padding-bottom: 80px; /* Plus d'espace pour le footer */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: auto;
+}
+
+/* --- ZONE DE CRÉATION : BIEN CENTRÉE --- */
+.creation-box, div[style*="rgba(0, 0, 0, 0.4)"] {
+  background: rgba(0, 0, 0, 0.4) !important;
+  border: 1px solid var(--glass-border) !important;
+  padding: 15px;
+  border-radius: 12px;
+  width: 95%;
+  max-width: 700px;
+  margin: 10px auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  transition: none !important;
+  transform: none !important;
+}
+
+/* --- FILTRES ET TRI : CENTRAGE HORIZONTAL --- */
+/* Cible la div qui contient les menus déroulants de filtre et tri */
+div[style*="margin-bottom: 20px"] {
+  display: flex !important;
+  justify-content: center !important; /* Force le centrage horizontal */
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+/* --- DOSSIERS (Cards) --- */
+.folder-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  padding: 10px;
+  width: 100%;
+}
+
+div[style*="border"] {
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--glass-border) !important;
+  border-radius: 10px;
+}
+
+/* --- INPUTS COMPACTS --- */
+input, select, textarea {
+  padding: 6px 10px;
+  border-radius: 5px;
+  border: 1px solid var(--glass-border);
+  background: rgba(255, 255, 255, 0.95);
+  color: #222;
+  font-size: 0.85rem;
+}
+
+button {
+  padding: 6px 12px;
+  border-radius: 5px;
+  border: none;
+  background: #4caf50;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* --- TÂCHES --- */
+li {
+  background: rgba(0, 0, 0, 0.25);
+  margin-bottom: 8px;
+  padding: 8px !important;
+  border-radius: 6px;
+  list-style: none;
+  text-align: left;
+}
+
+/* Fenêtre d'info (quand ouvert) */
+div[style*="background: rgb(238, 238, 238)"] {
+  background: #ffffff !important;
+  color: #1a1a1a !important;
+  border-radius: 6px;
+  padding: 10px !important;
+  border: 1px solid #ccc !important;
+}
+
+/* --- FOOTER --- */
+.App-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid var(--glass-border);
+  z-index: 1000;
+  font-size: 0.8rem;
 }
