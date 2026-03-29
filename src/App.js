@@ -1,12 +1,11 @@
-import logo from './logo.jpeg';
 import React, { useState } from 'react';
 import './App.css';
 import datas from './cfg/datas.json';
 import Header from './Header';
 import Footer from './Footer';
 
-let oui = 0;
-let tkt = 0;
+
+
 
 function App() {
   const [k, setK] = useState(0);
@@ -30,19 +29,7 @@ function App() {
   const [openedKey, setOpenedKey] = useState(null);
   const [editingKey, setEditingKey] = useState(null);
 
-  function Button() {
-    oui = (oui === 0) ? 1 : 0;
-    if (tkt === 0) { ouioui(); tkt = 1; }
-  }
 
-  function ouioui() {
-    setInterval(() => {
-      if (oui === 1) {
-        const randomColor = "#" + ((1 << 24) * Math.random() | 0).toString(16);
-        document.documentElement.style.setProperty('--main-bg-color', randomColor);
-      }
-    }, 10);
-  }
 
   const isTooOld = (dateStr) => {
     if (!dateStr) return false;
@@ -147,14 +134,14 @@ function App() {
 
             <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "20px" }}>
 
-              {/* --- SECTION SANS DOSSIER (Corrigée pour la lisibilité) --- */}
+
               {allTasks.filter(t => !allRels.some(r => r.tache === t.id)).length > 0 && !filterFolderId && (
                   <div style={{
                     border: "2px dashed #888",
                     padding: "15px",
                     width: "280px",
                     borderRadius: "10px",
-                    background: "rgba(0,0,0,0.3)", // Fond sombre ajouté
+                    background: "rgba(0,0,0,0.3)",
                     color: "white"
                   }}>
                     <h2 style={{ color: "#bbb" }}>Sans Dossier</h2>
@@ -215,7 +202,7 @@ function App() {
                 );
               })}
             </div>
-            <button onClick={Button} style={{marginTop: "20px"}}>ouiouibaguette</button>
+
           </section>
           <Footer />
         </div>
@@ -226,7 +213,7 @@ function App() {
       <div className="App">
         <Header onHome={() => setK(0)} />
         <section className="">
-          <div style={{marginTop: "20px", display: "flex", gap: "10px"}}>
+          <div style={{marginTop: "20px", gap: "10px"}}>
             <button className="import" onClick={handleImportButtonClick}>{hasData ? "continuer session" : "import backup"}</button>
             <button className="zero" onClick={handleStartZero}>start from nothing</button>
           </div>
